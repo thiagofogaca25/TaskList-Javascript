@@ -1,0 +1,1 @@
+This is a simple task list project developed using HTML, CSS, and JavaScript. With this application, you can easily create, edit, and delete tasks. Organize your activities efficiently and never forget something important again!
