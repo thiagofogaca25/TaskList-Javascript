@@ -9,15 +9,17 @@
   <div class="container text-white">
     <h1>Task List</h1>
     <div class="row text-white">
-      <div class="col-4 card border-white bg-dark">
+      <div class="col-4 card border-white rounded-0 bg-dark">
         <h2 class="text-white">My tasks</h2>
         <hr color="white" width="100%" size="5">
-        <ul id="task-list" class="text-white"></ul>
+        <ul id="task-list" class="text-white">
+          <!-- Tasks saved in localstorage will be display here! -->
+        </ul>
       </div>
-      <div class="col-7 card border-white bg-dark">
+      <div class="col-7 card border-white rounded-0 bg-dark">
         <h2 class="text-white">Add tasks</h2>
         <hr color="white" width="100%" size="5">
-        <form id="task-form" class="mt-3 mb-3 m-auto">
+        <form id="task-form" class="mt-3 mb-3 ">
           <input class="bg-dark text-white w-75" type="text" id="task-input" placeholder="Enter a task">
           <button class="btn btn-dark" type="submit">Add</button>
         </form>

@@ -17,16 +17,28 @@ function addTask(taskText) {
   var li = document.createElement("li");
   li.textContent = taskText;
 
+  var divButtons = document.createElement("div");
+  divButtons.className = "w-100 text-center"
+
+  var editButton = document.createElement("button");
+  editButton.className = "btn btn-info rounded-5 text-white w-25 p-0 m-1";
+  editButton.innerText = 'edit';
+  
   var deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.className = "btn btn-danger";
+  deleteButton.textContent = "X";
+  deleteButton.className = "btn btn-danger rounded-5 w-25 p-0 m-1";
   deleteButton.addEventListener("click", function() {
     taskList.removeChild(li);
     deleteTask(taskText);
   });
 
-  li.appendChild(deleteButton);
+  var hrbuttons = document.createElement('hr');
+
+  divButtons.appendChild(deleteButton);
+  divButtons.appendChild(editButton);
+  li.appendChild(divButtons);
   taskList.appendChild(li);
+  taskList.appendChild(hrbuttons);
 }
 
 function deleteTask(taskText) {
