@@ -8,13 +8,41 @@ h1 {
   text-align: center;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 form {
   margin-bottom: 20px;
 }
 
-input[type="text"] {
-  padding: 10px;
-  width: 70%;
+.center-form{
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.input-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+.input-tasktitle {
+  height: 40px;
+  width: 100%;
+  padding: 10px 50px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-tasktitle:focus {
+  border-color: #4285f4;
 }
 
 button {
