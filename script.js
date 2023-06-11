@@ -12,13 +12,27 @@ function loadTasks() {
 }
 
 function addTask(taskText) {
+  var text;
+  if (taskText.length > 20) {
+    const sliceText = taskText.substring(0, 20) + '...';
+    text = sliceText;
+  }else{
+    text = taskText;
+  }
   var taskList = document.getElementById("task-list");
 
+  var divli = document.createElement("div");
+  divli.className = 'row'
+
+  var lidiv = document.createElement("div");
+  lidiv.className = 'w-50 col'
+
   var li = document.createElement("li");
-  li.textContent = taskText;
+  li.textContent = text;
+  li.className = 'w-50'
 
   var divButtons = document.createElement("div");
-  divButtons.className = "w-100 text-center"
+  divButtons.className = "w-50 text-end col"
 
   var editButton = document.createElement("button");
   editButton.className = "btn btn-info rounded-5 text-white w-25 p-0 m-1";
@@ -32,7 +46,7 @@ function addTask(taskText) {
   deleteButton.textContent = "X";
   deleteButton.className = "btn btn-danger rounded-5 w-25 p-0 m-1";
   deleteButton.addEventListener("click", function() {
-    taskList.removeChild(li);
+    taskList.removeChild(divli);
     deleteTask(taskText);
   });
 
@@ -41,9 +55,14 @@ function addTask(taskText) {
 
   divButtons.appendChild(deleteButton);
   divButtons.appendChild(editButton);
-  li.appendChild(divButtons);
-  li.appendChild(hrList);
-  taskList.appendChild(li);
+
+  lidiv.appendChild(li)
+
+  divli.appendChild(lidiv)
+  divli.appendChild(divButtons)
+  divli.appendChild(hrList)
+
+  taskList.appendChild(divli);
   
 }
 
@@ -105,22 +124,32 @@ function editHandleFormSubmit(taskText) {
 
   var nameLabel = document.createElement('label');
   nameLabel.className = 'w-100 text-center'
-  nameLabel.textContent = 'Editar';
+  nameLabel.textContent = 'Edit Task';
 
   var nameInput = document.createElement('input');
   nameInput.className = 'input-tasktitle mb-2 mt-2 p-3'
   nameInput.setAttribute('type', 'text');
   nameInput.setAttribute('name', 'name');
   nameInput.placeholder = taskText;
+  nameInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
 
+
+  var mytasks = document.getElementById('mytasks');
+
+  mytasks.appendChild(divformedit)
   divformedit.appendChild(form);
   form.appendChild(nameLabel);
   form.appendChild(nameInput);
   form.appendChild(formButtons);
 
+
   var cancelButton = document.createElement('button');
   cancelButton.className = 'btn btn-danger'
-  cancelButton.textContent = 'Cancelar';
+  cancelButton.textContent = 'Cancel';
   cancelButton.addEventListener('click', function(event) {
   
     event.preventDefault();
@@ -132,8 +161,9 @@ function editHandleFormSubmit(taskText) {
   });
   formButtons.appendChild(cancelButton);
 
+
   var saveButton = document.createElement('button');
-  saveButton.textContent = 'Salvar';
+  saveButton.textContent = 'Save';
   saveButton.className = 'btn btn-success'
   saveButton.addEventListener('click', function(event) {
     event.preventDefault();
@@ -154,8 +184,7 @@ function editHandleFormSubmit(taskText) {
   formButtons.appendChild(saveButton);
 
 
-  var container = document.querySelector('.container');
-  container.appendChild(divformedit);
+ 
 }
 
 
